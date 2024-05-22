@@ -41,28 +41,27 @@ class BasicsPage extends StatelessWidget {
         // margin: const EdgeInsets.all(25),
         // padding: EdgeInsets.all(50),
         child: Center(
-          child: Card(
-            elevation: 7.5,
-            color: Colors.red,
-            margin: const EdgeInsets.all(10),
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: imageCenterAsset(size),
-            )
-
-            // child: Container(
-            //   height: 150,
-            //   width: 300,
-            //   color: Colors.grey,
-            //   child: simpleText("Je suis dans une card"),
-            // ),
-          )
+          child: cardWithImage(size)
         )
       ),
     );
   }
 
-  Card cardWithContainer(Size size) {
+  Card cardWithContainer(){
+    return Card(
+      elevation: 7.5,
+      color: Colors.red,
+      margin: const EdgeInsets.all(10),
+      child: Container(
+        height: 150,
+        width: 300,
+        color: Colors.grey,
+        child: simpleText("Je suis dans une card"),
+      ),
+    );
+  }
+
+  Card cardWithImage(Size size) {
     return Card(
         elevation: 7.5,
         color: Colors.red,
