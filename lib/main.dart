@@ -33,8 +33,8 @@ class BasicsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
-    print("size: $size");
-    print("platform: $platform");
+    // print("size: $size");
+    // print("platform: $platform");
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mon app basique", style: TextStyle(color: Colors.white),),
@@ -54,7 +54,7 @@ class BasicsPage extends StatelessWidget {
         // margin: const EdgeInsets.all(25),
         // padding: EdgeInsets.all(50),
         child: Center(
-          child: cardWithContainer()
+          child: cardWithImage(size)
         )
       ),
     );
@@ -77,12 +77,32 @@ class BasicsPage extends StatelessWidget {
   Card cardWithImage(Size size) {
     return Card(
         elevation: 7.5,
-        color: Colors.red,
+        color: Colors.tealAccent,
         margin: const EdgeInsets.all(10),
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: imageCenterAsset(size),
-        )
+        child: SizedBox(
+          height: 800,
+          width: 400,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  "Test de la colonne",
+                  style: TextStyle(
+                    color: Colors.deepPurpleAccent,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w900
+                  ),
+                ),
+                imageCenterNetwork(),
+                spanDemo()
+              ],
+            ),
+          ),
+        ),
     );
   }
 
@@ -131,8 +151,8 @@ class BasicsPage extends StatelessWidget {
     return Center(
       child: Image.network(
           "https://images.pexels.com/photos/1756086/pexels-photo-1756086.jpeg?auto=compress&cs=tinysrgb&w=600",
-        height: 300,
-        width: 200,
+        height: 620,
+        width: 330,
         fit: BoxFit.fill,
 
       ),
@@ -156,7 +176,7 @@ class BasicsPage extends StatelessWidget {
             text: "Hola",
             style: TextStyle(
                 color: Colors.red,
-                fontSize: 30
+                fontSize: 20
             ),
             children: [
               TextSpan(
