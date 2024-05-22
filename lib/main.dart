@@ -12,9 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
+        // primaryColor: Colors.teal,
+        // primarySwatch: Colors.teal,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -34,14 +36,25 @@ class BasicsPage extends StatelessWidget {
     print("size: $size");
     print("platform: $platform");
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Mon app basique", style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.teal,
+        leading: const Icon(Icons.adb, color: Colors.white,),
+        actions: const [
+          Icon(Icons.handyman, color: Colors.white,),
+          Icon(Icons.border_color, color: Colors.white,)
+        ],
+        centerTitle: true,
+        elevation: 7.5,
+      ),
       body: Container(
         height: size.height,
         width: size.height,
-        color: Colors.yellow,
+        color: Colors.white,
         // margin: const EdgeInsets.all(25),
         // padding: EdgeInsets.all(50),
         child: Center(
-          child: cardWithImage(size)
+          child: cardWithContainer()
         )
       ),
     );
