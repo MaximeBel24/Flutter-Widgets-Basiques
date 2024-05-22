@@ -97,6 +97,19 @@ class BasicsPage extends StatelessWidget {
                     fontWeight: FontWeight.w900
                   ),
                 ),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  color: Colors.teal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      imageCenterAsset(height: 200, width: 100),
+                      simpleText("Maxime Belin")
+                    ],
+                  ),
+                ),
+
                 imageCenterNetwork(),
                 spanDemo()
               ],
@@ -151,21 +164,22 @@ class BasicsPage extends StatelessWidget {
     return Center(
       child: Image.network(
           "https://images.pexels.com/photos/1756086/pexels-photo-1756086.jpeg?auto=compress&cs=tinysrgb&w=600",
-        height: 620,
-        width: 330,
-        fit: BoxFit.fill,
+        // height: 620,
+        // width: 330,
+        // fit: BoxFit.fill,
+        height: 200,
 
       ),
     );
   }
 
-  Center imageCenterAsset(Size size) {
+  Center imageCenterAsset({required double height, required double width }) {
     return Center(
       child: Image.asset(
         "images/beach.jpg",
         fit: BoxFit.cover,
-        height: size.height,
-        width: size.width,
+        height: height,
+        width: width,
       ),
     );
   }
