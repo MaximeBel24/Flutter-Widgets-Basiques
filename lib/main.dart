@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,17 +39,7 @@ class BasicsPage extends StatelessWidget {
     // print("size: $size");
     // print("platform: $platform");
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mon app basique", style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.teal,
-        leading: const Icon(Icons.adb, color: Colors.white,),
-        actions: const [
-          Icon(Icons.handyman, color: Colors.white,),
-          Icon(Icons.border_color, color: Colors.white,)
-        ],
-        centerTitle: true,
-        elevation: 7.5,
-      ),
+      appBar: myFirstAppBar(),
       body: Container(
         height: size.height,
         width: size.height,
@@ -57,6 +50,19 @@ class BasicsPage extends StatelessWidget {
           child: cardWithImage(size)
         )
       ),
+    );
+  }
+  AppBar myFirstAppBar(){
+    return AppBar(
+      title: const Text("Mon app basique", style: TextStyle(color: Colors.white),),
+      backgroundColor: Colors.teal,
+      leading: const Icon(Icons.adb, color: Colors.white,),
+      actions: const [
+        Icon(Icons.handyman, color: Colors.white,),
+        Icon(Icons.border_color, color: Colors.white,)
+      ],
+      centerTitle: true,
+      elevation: 7.5,
     );
   }
 
@@ -84,49 +90,87 @@ class BasicsPage extends StatelessWidget {
           width: 400,
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  "Test de la colonne",
-                  style: TextStyle(
-                    color: Colors.deepPurpleAccent,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w900
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  color: Colors.teal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      // imageCenterAsset(height: 180, width: 100),
-                      const CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.tealAccent,
-                        foregroundImage: AssetImage("images/cestmoi.png"),
-                      ),
-                      Expanded(
-                          child: simpleText("Hey ! C'est moi dans une row")
-                      ),
-                      const CircleAvatar(
-                        radius: 30,
-                        foregroundImage: NetworkImage("https://ih1.redbubble.net/image.175911116.4459/mwo,x1000,ipad_2_snap-pad,750x1000,f8f8f8.u1.jpg"),
-                      )
-                    ],
-                  ),
-                ),
-
-                imageCenterNetwork(),
-                spanDemo()
-              ],
-            ),
+            child: myFirstColumn(size),
           ),
         ),
+    );
+  }
+
+  Column myFirstColumn(Size size) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          "Test de la colonne",
+          style: TextStyle(
+              color: Colors.deepPurpleAccent,
+              fontSize: 15,
+              fontWeight: FontWeight.w900
+          ),
+        ),
+        myFirstStack(size),
+        const Divider(
+          color: Colors.teal,
+          thickness: 2,
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          color: Colors.teal,
+          child: rowCircleAvatar(),
+        ),
+
+        imageCenterNetwork(),
+        spanDemo()
+      ],
+    );
+  }
+  
+  Stack myFirstStack(Size size) {
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        imageCenterAsset(height: 200, width: size.width),
+        Padding(
+          padding: const EdgeInsets.only(top: 140),
+          child: profilePicture(radius: 60),
+        ),
+        const Text(
+          "BLABLABLA !!!",
+          style: TextStyle(
+              color: Colors.teal,
+              fontSize: 20,
+              fontWeight: FontWeight.w900
+          ),
+        )
+      ],
+    );
+  }
+
+  CircleAvatar profilePicture({required double radius}){
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: Colors.tealAccent,
+      foregroundImage: const AssetImage("images/cestmoi.png"),
+    );
+  }
+
+  Row rowCircleAvatar(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        // imageCenterAsset(height: 180, width: 100),
+        profilePicture(radius: 30),
+        Expanded(
+            child: simpleText("Hey ! C'est moi dans une row")
+        ),
+        const CircleAvatar(
+          radius: 30,
+          foregroundImage: NetworkImage("https://ih1.redbubble.net/image.175911116.4459/mwo,x1000,ipad_2_snap-pad,750x1000,f8f8f8.u1.jpg"),
+        )
+      ],
     );
   }
 
