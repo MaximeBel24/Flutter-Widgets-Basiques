@@ -104,8 +104,19 @@ class BasicsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      imageCenterAsset(height: 200, width: 100),
-                      simpleText("Maxime Belin")
+                      // imageCenterAsset(height: 180, width: 100),
+                      const CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.tealAccent,
+                        foregroundImage: AssetImage("images/cestmoi.png"),
+                      ),
+                      Expanded(
+                          child: simpleText("Hey ! C'est moi dans une row")
+                      ),
+                      const CircleAvatar(
+                        radius: 30,
+                        foregroundImage: NetworkImage("https://ih1.redbubble.net/image.175911116.4459/mwo,x1000,ipad_2_snap-pad,750x1000,f8f8f8.u1.jpg"),
+                      )
                     ],
                   ),
                 ),
