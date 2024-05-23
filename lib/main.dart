@@ -90,7 +90,10 @@ class BasicsPage extends StatelessWidget {
           width: 400,
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: myFirstColumn(size),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: myFirstColumn(size),
+            ),
           ),
         ),
     );
@@ -116,13 +119,34 @@ class BasicsPage extends StatelessWidget {
           thickness: 2,
         ),
         Container(
+          margin: const EdgeInsets.all(20),
+          height: 200,
+          width: size.width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/beach2.jpg"),
+              fit: BoxFit.cover
+            ),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.teal,
+                offset: Offset(2, 2),
+                blurRadius: 2,
+                spreadRadius: 5
+              )
+            ],
+            borderRadius: BorderRadius.all(Radius.circular(15))
+          ),
+        ),
+        Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
           color: Colors.teal,
           child: rowCircleAvatar(),
         ),
 
         imageCenterNetwork(),
-        spanDemo()
+        spanDemo(),
+        imageCenterNetwork()
       ],
     );
   }
@@ -136,14 +160,23 @@ class BasicsPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 140),
           child: profilePicture(radius: 60),
         ),
-        const Text(
-          "BLABLABLA !!!",
-          style: TextStyle(
-              color: Colors.teal,
-              fontSize: 20,
-              fontWeight: FontWeight.w900
-          ),
+        const Row(
+          children: [
+            Icon(Icons.favorite),
+            Icon(Icons.height),
+            Spacer(),
+            Text(
+              "BLABLABLA !!!",
+              style: TextStyle(
+                  color: Colors.teal,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900
+              ),
+            ),
+
+          ],
         )
+
       ],
     );
   }
