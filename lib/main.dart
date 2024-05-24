@@ -18,8 +18,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // primaryColor: Colors.teal,
-        // primarySwatch: Colors.teal,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -35,7 +33,6 @@ class BasicsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var platform = Theme.of(context).platform;
     // print("size: $size");
     // print("platform: $platform");
     return Scaffold(
@@ -52,6 +49,7 @@ class BasicsPage extends StatelessWidget {
       ),
     );
   }
+
   AppBar myFirstAppBar(){
     return AppBar(
       title: const Text("Mon app basique", style: TextStyle(color: Colors.white),),
